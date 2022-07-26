@@ -1,10 +1,10 @@
-<script setup></script>
-
 <template>
   <div class="home-nav-bar">
     <div class="title">Mobile Trip</div>
   </div>
 </template>
+
+<script setup></script>
 
 <style lang="less" scoped>
 .home-nav-bar {

@@ -1,11 +1,3 @@
-<script setup>
-import tabbarData from '@/assets/data/tabbar'
-import { getAssetUrl } from '@/utils/load_assets'
-import { ref } from 'vue'
-
-const currentIndex = ref(0)
-</script>
-
 <template>
   <div class="tab-bar">
     <van-tabbar v-model="currentIndex" active-color="#ff9854">
@@ -23,5 +15,13 @@ const currentIndex = ref(0)
     </van-tabbar>
   </div>
 </template>
+
+<script setup>
+import tabbarData from '@/assets/data/tabbar'
+import { getAssetUrl } from '@/utils/load_assets'
+import { ref } from 'vue'
+
+const currentIndex = ref(0)
+</script>
 
 <style lang="less" scoped></style>

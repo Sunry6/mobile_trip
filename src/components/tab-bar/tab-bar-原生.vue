@@ -1,18 +1,3 @@
-<script setup>
-import bannerData from '@/assets/data/tabbar'
-import { getAssetUrl } from '@/utils/load_assets'
-import { useRouter } from 'vue-router'
-import { useTabbarStore } from '@/stores/modules/tabbar'
-
-const router = useRouter()
-const tabbarStore = useTabbarStore()
-
-const itemClick = (path, index) => {
-  router.push(path)
-  tabbarStore.currentIndex = index
-}
-</script>
-
 <template>
   <div class="tab-bar">
     <div
@@ -28,6 +13,21 @@ const itemClick = (path, index) => {
     </div>
   </div>
 </template>
+
+<script setup>
+import bannerData from '@/assets/data/tabbar'
+import { getAssetUrl } from '@/utils/load_assets'
+import { useRouter } from 'vue-router'
+import { useTabbarStore } from '@/stores/modules/tabbar'
+
+const router = useRouter()
+const tabbarStore = useTabbarStore()
+
+const itemClick = (path, index) => {
+  router.push(path)
+  tabbarStore.currentIndex = index
+}
+</script>
 
 <style lang="less" scoped>
 .tab-bar {
