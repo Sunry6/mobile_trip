@@ -2,7 +2,6 @@
  * city页面的状态管理文件
  * (数据,数据处理,网络请求)
  */
-
 import { getCityAllData } from '@/services'
 import { defineStore } from 'pinia'
 

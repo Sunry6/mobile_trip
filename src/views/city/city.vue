@@ -1,5 +1,5 @@
 <template>
-  <div class="city">
+  <div class="city top-page">
     <!-- 顶部搜索框 -->
     <div class="top">
       <!-- 搜索框 -->
@@ -46,8 +46,17 @@ const { allCities } = storeToRefs(cityStore)
 </script>
 
 <style lang="less" scoped>
-.content {
-  // 重写index bar侧边栏颜色的样式
-  --van-index-bar-index-active-color: var(--primary-color);
+.city {
+  .top {
+    position: relative;
+    z-index: 9;
+  }
+
+  // 布局滚动
+  .content {
+    height: calc(100vh - 98px);
+    overflow-y: auto;
+    --van-index-bar-index-active-color: var(--primary-color);
+  }
 }
 </style>

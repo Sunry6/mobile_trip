@@ -1,5 +1,5 @@
 <template>
-  <div class="search-box-loaction">
+  <div class="search-box-loaction bottom-gray-line">
     <!-- 选择城市 -->
     <div class="city" @click="cityClick">{{ currentCity.cityName }}</div>
     <!-- 获取定位信息 -->
