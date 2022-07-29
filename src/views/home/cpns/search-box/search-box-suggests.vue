@@ -19,7 +19,6 @@ import { storeToRefs } from 'pinia'
 
 // 获取热门推荐的数据
 const homeStore = useHomeStore()
-homeStore.fetchHotSuggestData()
 const { hotSuggests } = storeToRefs(homeStore)
 </script>
 
@@ -64,6 +63,8 @@ const { hotSuggests } = storeToRefs(homeStore)
 
 .hot-suggests {
   margin: 10px 0;
+  // 自适应高度,把内容都显示出来
+  height: auto;
 
   .item {
     padding: 4px 8px;

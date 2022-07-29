@@ -11,6 +11,9 @@
 
     <!-- 热门推荐 -->
     <search-box-suggests />
+
+    <!-- 搜索按钮 -->
+    <search-btn></search-btn>
   </div>
 </template>
 
@@ -19,6 +22,7 @@ import searchBoxLocation from './search-box/search-box-location.vue'
 import searchBoxDate from './search-box/search-box-date.vue'
 import searchBoxInfo from './search-box/search-box-info.vue'
 import searchBoxSuggests from './search-box/search-box-suggests.vue'
+import searchBtn from './search-box/search-btn.vue'
 </script>
 
 <style lang="less" scoped>

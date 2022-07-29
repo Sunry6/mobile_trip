@@ -4,14 +4,14 @@
       <div class="start">
         <div class="date">
           <span class="tip">入住</span>
-          <span class="time">{{ startDate }}</span>
+          <span class="time">{{ startDateStr }}</span>
         </div>
       </div>
       <div class="stay">共{{ stayCount }}晚</div>
       <div class="end">
         <div class="date">
           <span class="tip">离店</span>
-          <span class="time">{{ endDate }}</span>
+          <span class="time">{{ endDateStr }}</span>
         </div>
       </div>
     </div>
@@ -20,22 +20,22 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import searchBoxLocation from './search-box-location.vue'
+import { ref, computed } from 'vue'
 import { formatMonthDay, getDiffDays } from '@/utils/format_date'
+import useMainStore from '@/stores/modules/main'
+import { storeToRefs } from 'pinia'
 
 // 获取当前日期
-const nowDate = new Date()
-const newDate = new Date()
 // 默认将入住日期和离店日期的间隔设置为1天
-newDate.setDate(nowDate.getDate() + 1)
+const mainStore = useMainStore()
+const { startDate, endDate } = storeToRefs(mainStore)
 
 // 入住时间
-const startDate = ref(formatMonthDay(nowDate))
+const startDateStr = computed(() => formatMonthDay(startDate.value))
 // 离店时间
-const endDate = ref(formatMonthDay(newDate))
+const endDateStr = computed(() => formatMonthDay(endDate.value))
 // 入住时长
-const stayCount = ref(getDiffDays(nowDate, newDate))
+const stayCount = ref(getDiffDays(startDate.value, endDate.value))
 
 // 控制日期框弹出,默认为false
 const showCalendar = ref(false)
@@ -50,9 +50,9 @@ const onConfirm = value => {
   // 从回调参数中拿到离店时间
   const selectEndDate = value[1]
   // 给入住时间进行格式化
-  startDate.value = formatMonthDay(selectStartDate)
+  mainStore.startDate = selectStartDate
   // 给离店时间进行格式化
-  endDate.value = formatMonthDay(selectEndDate)
+  mainStore.endDate = selectEndDate
   // 计算入住时长
   stayCount.value = getDiffDays(selectStartDate, selectEndDate)
   // 完成上面操作后,隐藏日历
