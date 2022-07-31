@@ -2,8 +2,10 @@
  * 封装网络请求文件
  */
 import axios from 'axios'
-
 import { BASE_URL, TIMEOUT } from './config'
+import useMainStore from '@/stores/modules/main'
+
+const mainStore = useMainStore()
 
 class SRYRequest {
   constructor(baseURL, timeout = 10000) {
@@ -11,6 +13,27 @@ class SRYRequest {
       baseURL,
       timeout,
     })
+
+    this.instance.interceptors.request.use(
+      config => {
+        mainStore.isLoading = true
+        return config
+      },
+      err => {
+        return err
+      }
+    )
+
+    this.instance.interceptors.response.use(
+      res => {
+        mainStore.isLoading = false
+        return res
+      },
+      err => {
+        mainStore.isLoading = false
+        return err
+      }
+    )
   }
 
   reuqest(config) {
